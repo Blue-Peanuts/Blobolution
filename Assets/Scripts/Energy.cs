@@ -38,5 +38,6 @@ public class Energy : MonoBehaviour
         {
             Destroy(target);
         }
-    } 
+    }
+
 }
