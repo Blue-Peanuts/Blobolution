@@ -12,8 +12,8 @@ public class Energy : MonoBehaviour
     public void Drain(int drainAmount, Energy target)
     {
         int minDrainAmount;
-        int targetDrainAmount;
-        int thisDrainAmount;
+        int targetDrainAmount = drainAmount;
+        int thisDrainAmount = drainAmount;
 
         // Check how much to drain/gain
         if (target.energyLevel - drainAmount <= 0)
@@ -27,11 +27,11 @@ public class Energy : MonoBehaviour
         }
 
         // Find minimum drain amount
-        minDrainAmount = Min(targetDrainAmount, thisDrainAmount);
+        minDrainAmount = Mathf.Min(targetDrainAmount, thisDrainAmount);
 
         // Set new energy levels
-        target.energyLevel = Max(0, target.energyLevel - minDrainAmount);
-        this.energyLevel = Min(this.maxEnergy, this.energylevel + mindrainAmount);
+        target.energyLevel = Mathf.Max(0, target.energyLevel - minDrainAmount);
+        this.energyLevel = Mathf.Min(this.maxEnergy, this.energyLevel + minDrainAmount);
 
         //Destroy if energy is 0
         if (target.energyLevel <= 0)
