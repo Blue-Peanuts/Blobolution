@@ -7,6 +7,7 @@ public class Blob : MonoBehaviour
 {
     public Energy energy;
     public Energy food;
+    public float moveSpeed = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -92,5 +93,9 @@ public class Blob : MonoBehaviour
     public GameObject GetNearestFriend()
     {
         return FindNearestOfGroup(GetAllNearEnemies(20), 20);
+    }
+    public GameObject GetNearestFood()
+    {
+        return null;
     }
 }
