@@ -54,7 +54,7 @@ public class StateMachine : MonoBehaviour
 
             foreach (var condition in tuple.Item1)
             {
-                if (!condition.Fullfilled())
+                if (!condition.Fullfilled(this))
                 {
                     change = false;
                 }

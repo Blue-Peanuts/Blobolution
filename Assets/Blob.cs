@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,26 +7,52 @@ using UnityEngine;
 public class Blob : MonoBehaviour
 {
     public Energy energy;
-    public Energy food;
     public float moveSpeed = 1f;
+    [SerializeField] private ParticleSystem[] particleSystems;
+    [SerializeField] private SpriteRenderer spriteRenderer; 
 
     // Start is called before the first frame update
     void Start()
     {
         energy = gameObject.GetComponent<Energy>();
-        food = GameObject.FindGameObjectWithTag("Food").GetComponent<Energy>();
+        MasterManager.Instance.blobCount++;
+    }
+
+    private void OnDestroy()
+    {
+        MasterManager.Instance.blobCount--;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (energy.energyLevel > 90)
+        {
+            GiveBirth();
+        }
 
+        foreach (var particle in particleSystems)
+        {
+            ParticleSystem.MainModule particleMain = particle.main;
+            particleMain.startColor = new Color(
+                GetComponent<Gene>().RedPigment,GetComponent<Gene>().BluePigment,GetComponent<Gene>().GreenPigment);
+        }
+        spriteRenderer.color = new Color(
+            GetComponent<Gene>().RedPigment,GetComponent<Gene>().BluePigment,GetComponent<Gene>().GreenPigment);
+    }
+
+    void GiveBirth()
+    {
+        GameObject son = Instantiate(MasterManager.Instance.blobPrefab);
+        Destroy(son.GetComponent<Gene>());
+        GetComponent<Gene>().Mutate(son);
+        son.GetComponent<Energy>().Drain(50, GetComponent<Energy>());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Food"))
         {
-            energy.Drain(food.energyLevel, food);
+            energy.Drain(collision.GetComponent<Energy>().energyLevel, collision.GetComponent<Energy>());
         }
     }
 
@@ -96,6 +123,6 @@ public class Blob : MonoBehaviour
     }
     public GameObject GetNearestFood()
     {
-        return null;
+        return FindNearestOfGroup(FindAllNearTaggedObject("Food", 20), 20);
     }
 }

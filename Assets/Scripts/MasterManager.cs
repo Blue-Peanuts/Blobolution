@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MasterManager : MonoBehaviour
 {
+    public static MasterManager Instance;
+    
     private const int NewBlobThreshold = 20;
     private const int OriginalPelletEnergy = 3;
     private const int OriginalBlobEnergy = 30;
@@ -14,9 +16,14 @@ public class MasterManager : MonoBehaviour
     [HideInInspector]
     public int blobCount = 0;
 
-    [SerializeField] private GameObject blobPrefab;
+    public GameObject blobPrefab;
     [SerializeField] private GameObject pelletPrefab;
-    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Update()
     {
         if (blobCount < NewBlobThreshold) //if we need new blobs

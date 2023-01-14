@@ -7,8 +7,6 @@ public abstract class BaseCondition
     {
         MoreThan, LessThan
     }
-
-    protected StateMachine Machine;
     protected abstract float MaxValue
     {
         get;
@@ -18,43 +16,37 @@ public abstract class BaseCondition
     {
         get;
     }
-    
-    public BaseCondition(StateMachine machine)
-    {
-        Machine = machine;
-    }
 
-    protected abstract float Value { get; }
+    protected abstract float Value(StateMachine machine);
     public ConditionType Type;
     public float Threshold;
     
-    public bool Fullfilled()
+    public bool Fullfilled(StateMachine machine)
     {
         if (Type == ConditionType.LessThan)
         {
-            return Value < Threshold;
+            return Value(machine) < Threshold;
         }
 
-        return Value > Threshold;
+        return Value(machine) > Threshold;
     }
-
     public void Mutate()
     {
         Threshold += Random.Range(1, -1) * (MaxValue - MinValue) / 5f;
         Threshold = Mathf.Clamp(Threshold, MinValue, MaxValue);
     }
 
-    public static BaseCondition NewRandomCondition(StateMachine machine)
+    public static BaseCondition NewRandomCondition()
     {
         int roll = Random.Range(0, 6);
         BaseCondition[] conditions =
         {
-            new ConditionTimeFromBirth(machine),
-            new ConditionTimeFromStateChange(machine),
-            new ConditionClosestFood(machine),
-            new ConditionClosestEnemy(machine),
-            new ConditionClosestFriend(machine),
-            new ConditionEnergy(machine),
+            new ConditionTimeFromBirth(),
+            new ConditionTimeFromStateChange(),
+            new ConditionClosestFood(),
+            new ConditionClosestEnemy(),
+            new ConditionClosestFriend(),
+            new ConditionEnergy(),
         };
         BaseCondition pickedCondition = conditions[roll];
         pickedCondition.Threshold = (pickedCondition.MaxValue + pickedCondition.MinValue) / 2;

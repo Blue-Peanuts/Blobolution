@@ -76,4 +76,32 @@ public class Gene : MonoBehaviour
     {
         return false;
     }
+
+    public static Gene RandomGene(GameObject blob)
+    {
+        Gene gene = blob.AddComponent<Gene>();
+        gene._redPigment = Random.Range(0f, 1f);
+        gene._greenPigment = Random.Range(0f, 1f);
+        gene._bluePigment = Random.Range(0f, 1f);
+        gene.Transitions.Add(Transition.RandomTransition());
+
+        return gene;
+    }
+
+    public Gene Mutate(GameObject blob)
+    {
+        Gene newGene = blob.AddComponent<Gene>();
+        
+        newGene._redPigment = Random.Range(0f, 1f);
+        newGene._greenPigment = Random.Range(0f, 1f);
+        newGene._bluePigment = Random.Range(0f, 1f);
+        
+        newGene.Transitions = new List<Transition>();
+        foreach (var tr in Transitions)
+        {
+            newGene.Transitions.Add(tr.Mutate());
+        }
+
+        return newGene;
+    }
 }
