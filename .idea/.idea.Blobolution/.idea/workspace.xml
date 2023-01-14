@@ -2,14 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="006224d2-ea5f-4dde-8ecd-4c36e06c6e53" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Conditions/ConditionClasses.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/States/AvoidEnemy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/States/AvoidEnemy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/States/AvoidFriend.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/States/AvoidFriend.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/States/StateGoToFood.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/States/StateGoToFood.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/States/StateGoToFriend.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/States/StateGoToFriend.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blobolution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blobolution/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestArk.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestArk.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Blob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blob.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Conditions/ConditionTimeFromBirth.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Conditions/ConditionTimeFromBirth.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Conditions/ConditionClasses.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StateMachine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Blob.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -66,7 +82,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673716716136</updated>
-      <workItem from="1673716722631" duration="5540000" />
+      <workItem from="1673716722631" duration="9446000" />
     </task>
     <servers />
   </component>

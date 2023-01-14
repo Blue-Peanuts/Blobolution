@@ -7,6 +7,11 @@ public class StateMachine : MonoBehaviour
     
     private int _currentStateId = 0;
 
+    private float _timeAtBirth;
+    private float _timeAtStateChange;
+    public float LifeTime => Time.time - _timeAtBirth;
+    public float StateLifeTime => Time.time - _timeAtStateChange;
+
     private Gene _gene = null;
     private Gene MyGene {
         get
@@ -19,9 +24,16 @@ public class StateMachine : MonoBehaviour
 
     private void ChangeState(int id)
     {
+        _timeAtStateChange = Time.time;
         states[_currentStateId].enabled = false;
         _currentStateId = id;
         states[_currentStateId].enabled = true;
+    }
+
+    private void Start()
+    {
+        _timeAtBirth = Time.time;
+        _timeAtStateChange = Time.time;
     }
 
     private void Update()
@@ -34,4 +46,6 @@ public class StateMachine : MonoBehaviour
         //call ChangeState if needs to
         //read MyGene to get transition info
     }
+    
+    
 }

@@ -57,4 +57,9 @@ public class Gene : MonoBehaviour
         //Implement mapped transitions here
         return null;
     }
+    
+    public bool IsFriendsWith(Gene targetGene)
+    {
+        return false;
+    }
 }
