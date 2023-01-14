@@ -45,6 +45,30 @@ public class StateMachine : MonoBehaviour
     {
         //call ChangeState if needs to
         //read MyGene to get transition info
+
+        var geneTransitions = MyGene.MappedTransitions;
+
+        foreach (var tuple in geneTransitions[_currentStateId])
+        {
+            bool change = true;
+
+            foreach (var condition in tuple.Item1)
+            {
+                if (!condition.Fullfilled())
+                {
+                    change = false;
+                }
+            }
+
+            if (change)
+            {
+                ChangeState(tuple.Item2);
+                break;
+            }
+
+        }
+
+
     }
     
     
