@@ -40,9 +40,9 @@ public class Gene : MonoBehaviour
 
     public List<int> inheritance;
 
-    private Dictionary<int, (List<BaseCondition>, int)> _mappedTransitions = null;
+    private Dictionary<int, List<(List<BaseCondition>, int)>> _mappedTransitions = null;
 
-    public Dictionary<int, (List<BaseCondition>, int)> MappedTransitions
+    public Dictionary<int, List<(List<BaseCondition>, int)>> MappedTransitions
     {
         get
         {
@@ -52,7 +52,7 @@ public class Gene : MonoBehaviour
         }
     }
 
-    private Dictionary<int, (List<BaseCondition>, int)> GetMappedTransitions(List<Transition> transitions)
+    private Dictionary<int, List<(List<BaseCondition>, int)>> GetMappedTransitions(List<Transition> transitions)
     {
         //Implement mapped transitions here
         return null;
