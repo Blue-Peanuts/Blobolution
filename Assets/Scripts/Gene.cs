@@ -51,10 +51,24 @@ public class Gene : MonoBehaviour
             return _mappedTransitions;
         }
     }
-
     private Dictionary<int, List<(List<BaseCondition>, int)>> GetMappedTransitions(List<Transition> transitions)
     {
-        //Implement mapped transitions here
+        Dictionary<int, List<(List<BaseCondition>, int)>> dict = new Dictionary<int, List<(List<BaseCondition>, int)>>();
+        
+        foreach (var transition in transitions)
+        {
+            if (!dict.ContainsKey(transition.FromStateId))
+            {
+                List<(List<BaseCondition>, int)> lst = new List<(List<BaseCondition>, int)>();
+                lst.Add((transition.Conditions, transition.ToStateId));
+                dict.Add(transition.FromStateId, lst);
+            }
+            else
+            {
+                dict[transition.FromStateId].Add((transition.Conditions, transition.ToStateId));
+            }
+        }
+
         return null;
     }
     
