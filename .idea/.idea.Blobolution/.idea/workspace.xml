@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="006224d2-ea5f-4dde-8ecd-4c36e06c6e53" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blobolution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blobolution/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Blob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blob.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673716716136</updated>
-      <workItem from="1673716722631" duration="16703000" />
+      <workItem from="1673716722631" duration="17979000" />
     </task>
     <servers />
   </component>
