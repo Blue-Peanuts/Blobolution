@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 
@@ -42,6 +41,8 @@ public class Gene : MonoBehaviour
 
     public List<Transition> Transitions = null;
 
+    public List<int> inheritance;
+
     private Dictionary<int, List<(List<BaseCondition>, int)>> _mappedTransitions = null;
 
     public Dictionary<int, List<(List<BaseCondition>, int)>> MappedTransitions
@@ -71,7 +72,7 @@ public class Gene : MonoBehaviour
             }
         }
 
-        return dict;
+        return null;
     }
     
     public bool IsFriendsWith(Gene targetGene)
@@ -95,8 +96,8 @@ public class Gene : MonoBehaviour
         gene._redPigment = Random.Range(0f, 1f);
         gene._greenPigment = Random.Range(0f, 1f);
         gene._bluePigment = Random.Range(0f, 1f);
-        gene.Transitions = new List<Transition>();
         gene.Transitions.Add(Transition.RandomTransition());
+        
         gene.FamilyTree.Add(Random.Range(0, 9999));
 
         return gene;

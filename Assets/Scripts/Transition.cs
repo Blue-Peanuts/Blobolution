@@ -22,7 +22,6 @@ public class Transition
     public Transition Mutate()
     {
         Transition newTransition = new Transition();
-        newTransition.Conditions = new List<BaseCondition>();
         foreach (var condition in Conditions)
         {
             BaseCondition newCondition = (BaseCondition)Activator.CreateInstance(condition.GetType());
