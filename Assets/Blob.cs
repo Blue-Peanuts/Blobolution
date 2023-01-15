@@ -60,6 +60,9 @@ public class Blob : MonoBehaviour
     {
         Vector2 currentPosition = transform.position;
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(currentPosition, radius);
+        List<Collider2D> hitCollidersList = hitColliders.ToList();
+        hitCollidersList.Remove(GetComponent<Collider2D>());
+        hitColliders = hitCollidersList.ToArray();
         return hitColliders;
     }
     

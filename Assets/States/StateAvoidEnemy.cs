@@ -14,6 +14,6 @@ public class StateAvoidEnemy : BaseState
     void FixedUpdate()
     {
         Vector2 lookDir = (blob.GetNearestEnemy().transform.position - gameObject.transform.position).normalized;
-        rb.velocity = lookDir;
+        rb.velocity = -lookDir;
     }
 }
