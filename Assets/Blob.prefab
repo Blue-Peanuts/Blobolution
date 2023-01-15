@@ -14532,6 +14532,7 @@ GameObject:
   - component: {fileID: 4400072353801127450}
   - component: {fileID: 4400072353801127445}
   - component: {fileID: 1211254396676041606}
+  - component: {fileID: 7405480372320034700}
   m_Layer: 0
   m_Name: Blob
   m_TagString: Blob
@@ -14611,3 +14612,15 @@ MonoBehaviour:
   moveSpeed: 1
   particleSystems: []
   spriteRenderer: {fileID: 0}
+--- !u!114 &7405480372320034700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400072353801127444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95ecccde790d124b9126a9a8e0abee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
