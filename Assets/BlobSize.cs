@@ -14,7 +14,7 @@ public class BlobSize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float finalScale = energy.energyLevel / 100 * 0.4f +0.8f;
+        float finalScale = energy.energyLevel / 100f * 0.6f +0.7f;
         gameObject.transform.localScale = Vector3.one * finalScale;
     }
 }

@@ -43,6 +43,12 @@ public class Blob : MonoBehaviour
         }
         spriteRenderer.color = new Color(
             GetComponent<Gene>().RedPigment,GetComponent<Gene>().BluePigment,GetComponent<Gene>().GreenPigment);
+
+        if (Vector3.Distance(transform.position, Vector3.zero) > 180)
+        {
+            transform.position = -transform.position;
+            transform.position += (Vector3.zero - transform.position).normalized * 5;
+        }
     }
 
     void GiveBirth()

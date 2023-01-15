@@ -8,8 +8,10 @@ public class StateGoToEnemy : BaseState
     public Rigidbody2D rb;
     private float delayForBite = 1;
     private float biteCDNow = 1;
+    private Vector3 initialPos;
     void Start()
     {
+        initialPos = transform.position;
         blob = gameObject.GetComponent<Blob>();
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
@@ -29,15 +31,14 @@ public class StateGoToEnemy : BaseState
         foreach (var foe in GetComponent<Blob>().GetAllNearEnemies(1.5f))
         {
             if(!foe.GetComponent<StateGoToEnemy>() || foe.GetComponent<StateGoToEnemy>().enabled == false || GetComponent<Energy>().energyLevel > foe.GetComponent<Energy>().energyLevel)
-                GetComponent<Energy>().Drain(20,foe.GetComponent<Energy>());
+                GetComponent<Energy>().Drain(5,foe.GetComponent<Energy>());
         }
     }
     void FixedUpdate()
     {
         if (!blob.GetNearestEnemy())
         {
-            
-            rb.velocity = -transform.position.normalized;
+            rb.velocity = (initialPos - transform.position).normalized;
             return;
         }
         Vector2 lookDir = (blob.GetNearestEnemy().transform.position - gameObject.transform.position).normalized;
