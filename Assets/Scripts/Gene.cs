@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Gene : MonoBehaviour
 {
     private const int StateCount = 4;
+
+    [HideInInspector] public List<int> FamilyTree = new List<int>(); 
     
     private float _redPigment = 0.5f;
     public float RedPigment
@@ -84,6 +87,8 @@ public class Gene : MonoBehaviour
         gene._greenPigment = Random.Range(0f, 1f);
         gene._bluePigment = Random.Range(0f, 1f);
         gene.Transitions.Add(Transition.RandomTransition());
+        
+        gene.FamilyTree.Add(Random.Range(0, 9999));
 
         return gene;
     }
@@ -92,9 +97,9 @@ public class Gene : MonoBehaviour
     {
         Gene newGene = blob.AddComponent<Gene>();
         
-        newGene._redPigment = Random.Range(0f, 1f);
-        newGene._greenPigment = Random.Range(0f, 1f);
-        newGene._bluePigment = Random.Range(0f, 1f);
+        newGene._redPigment = _redPigment + Random.Range(-0.1f, 0.1f);
+        newGene._greenPigment = _greenPigment + Random.Range(-0.1f, 0.1f);
+        newGene._bluePigment = _bluePigment + Random.Range(-0.1f, 0.1f);
         
         newGene.Transitions = new List<Transition>();
         foreach (var tr in Transitions)
@@ -102,6 +107,20 @@ public class Gene : MonoBehaviour
             newGene.Transitions.Add(tr.Mutate());
         }
 
+        if (Random.Range(0, 9) == 0)
+        {
+            newGene.Transitions.Add(Transition.RandomTransition());
+        }
+
+        if (Random.Range(0, 9) == 0)
+            newGene.Transitions.RemoveAt(Random.Range(0, newGene.Transitions.Count));
+
+        newGene.FamilyTree = FamilyTree.ToArray().ToList();
+        newGene.FamilyTree.Add(Random.Range(0, 9999));
+        if (FamilyTree.Count > 4)
+        {
+            FamilyTree.RemoveAt(0);
+        }
         return newGene;
     }
 }
