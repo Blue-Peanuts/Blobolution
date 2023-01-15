@@ -47,26 +47,27 @@ public class StateMachine : MonoBehaviour
         //read MyGene to get transition info
 
         var geneTransitions = MyGene.MappedTransitions;
-
-        foreach (var tuple in geneTransitions[_currentStateId])
-        {
-            bool change = true;
-
-            foreach (var condition in tuple.Item1)
+        //print(MyGene.MappedTransitions);
+        if(geneTransitions.ContainsKey(_currentStateId))
+            foreach (var tuple in geneTransitions[_currentStateId])
             {
-                if (!condition.Fullfilled(this))
+                bool change = true;
+                print(tuple);
+                foreach (var condition in tuple.Item1)
                 {
-                    change = false;
+                    if (!condition.Fullfilled(this))
+                    {
+                        change = false;
+                    }
                 }
-            }
 
-            if (change)
-            {
-                ChangeState(tuple.Item2);
-                break;
-            }
+                if (change)
+                {
+                    ChangeState(tuple.Item2);
+                    break;
+                }
 
-        }
+            }
 
 
     }

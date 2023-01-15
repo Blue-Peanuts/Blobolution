@@ -36,7 +36,7 @@ public class Energy : MonoBehaviour
         //Destroy if energy is 0
         if (target.energyLevel <= 0)
         {
-            Destroy(target);
+            Destroy(target.gameObject);
         }
     }
 

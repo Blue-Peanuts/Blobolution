@@ -39,6 +39,8 @@ public class Blob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GetComponent<Gene>())
+            return;
         if (energy.energyLevel > 90)
         {
             GiveBirth();
@@ -56,8 +58,7 @@ public class Blob : MonoBehaviour
 
     void GiveBirth()
     {
-        GameObject son = Instantiate(MasterManager.Instance.blobPrefab);
-        Destroy(son.GetComponent<Gene>());
+        GameObject son = Instantiate(MasterManager.Instance.blobPrefab,transform.position, Quaternion.identity);
         GetComponent<Gene>().Mutate(son);
         son.GetComponent<Energy>().Drain(50, GetComponent<Energy>());
     }
@@ -65,7 +66,7 @@ public class Blob : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Food"))
         {
-            energy.Drain(collision.GetComponent<Energy>().energyLevel, collision.GetComponent<Energy>());
+            energy.Drain(collision.gameObject.GetComponent<Energy>().energyLevel, collision.gameObject.GetComponent<Energy>());
         }
     }
 
@@ -75,8 +76,15 @@ public class Blob : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(currentPosition, radius);
         List<Collider2D> hitCollidersList = hitColliders.ToList();
         hitCollidersList.Remove(GetComponent<Collider2D>());
-        hitColliders = hitCollidersList.ToArray();
-        return hitColliders;
+
+        List<Collider2D> finalColliders = new List<Collider2D>();
+        
+        foreach (var VARIABLE in hitCollidersList)
+        {
+            if(VARIABLE.gameObject.CompareTag(targetTag))
+                finalColliders.Add(VARIABLE);
+        }
+        return finalColliders.ToArray();
     }
     
     public GameObject FindNearestOfGroup(Collider2D[] group, float radius) {
@@ -106,7 +114,7 @@ public class Blob : MonoBehaviour
 
     public Collider2D[] GetAllNearEnemies(float radius)
     {
-        List<Collider2D> oldGroup = FindAllNearTaggedObject("Blob", 20).ToList();
+        List<Collider2D> oldGroup = FindAllNearTaggedObject("Blob", radius).ToList();
         List<Collider2D> newGroup = new List<Collider2D>();
         foreach (var col in oldGroup)
         {
