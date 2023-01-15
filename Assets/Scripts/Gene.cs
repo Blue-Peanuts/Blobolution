@@ -77,7 +77,17 @@ public class Gene : MonoBehaviour
     
     public bool IsFriendsWith(Gene targetGene)
     {
+        foreach(var relative1 in targetGene.FamilyTree)
+        {
+            foreach (var relative2 in this.FamilyTree)
+            {
+                if (relative1 == relative2){
+                    return true;
+                }
+            }
+        }
         return false;
+        
     }
 
     public static Gene RandomGene(GameObject blob)
