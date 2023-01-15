@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MasterManager : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class MasterManager : MonoBehaviour
     private const int OriginalPelletEnergy = 3;
     private const int OriginalBlobEnergy = 30;
     
-    private int EnergyLevel => 0;
+    private int EnergyLevel => GetComponent<Energy>().energyLevel;
     [HideInInspector]
     public int blobCount = 0;
 
@@ -22,6 +24,18 @@ public class MasterManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        StartCoroutine(DrainAll());
+    }
+    IEnumerator DrainAll()
+    {
+        print('a');
+        foreach (var VARIABLE in FindObjectsOfType<Blob>())
+        {
+            GetComponent<Energy>().Drain(1, VARIABLE.GetComponent<Energy>());
+        }
+
+        yield return new WaitForSeconds(1);
+        StartCoroutine(DrainAll());
     }
 
     private void Update()
@@ -42,10 +56,13 @@ public class MasterManager : MonoBehaviour
 
     private void CreateBlob()
     {
-        //Blob should drain energy from this
+        GameObject blob = Instantiate(blobPrefab, (Vector3)Random.insideUnitCircle * 30, quaternion.identity);
+        Gene.RandomGene(blob);
+        blob.GetComponent<Energy>().Drain(OriginalBlobEnergy,GetComponent<Energy>());
     }
     private void CreatePellets()
-    {
-        //Pellet should drain energy from this
+    {        
+        GameObject blob = Instantiate(pelletPrefab, (Vector3)Random.insideUnitCircle * 60, quaternion.identity);
+        blob.GetComponent<Energy>().Drain(OriginalPelletEnergy,GetComponent<Energy>());
     }
 }
