@@ -12,7 +12,7 @@ public class StateIdle : BaseState
 
     void Update()
     {
-        blob.moveSpeed = 0f;
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 }
 

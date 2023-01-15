@@ -14,7 +14,7 @@ public class StateGoToFood : BaseState
     }
     void FixedUpdate()
     {
-        Vector2 lookDir = (gameObject.transform.position - blob.GetNearestFood().transform.position).normalized;
+        Vector2 lookDir = (blob.GetNearestFood().transform.position - gameObject.transform.position).normalized;
         rb.velocity = lookDir;
     }
 }

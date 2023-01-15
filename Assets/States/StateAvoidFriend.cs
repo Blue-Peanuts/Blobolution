@@ -14,6 +14,6 @@ public class StateAvoidFriend : BaseState
     void FixedUpdate()
     {
         Vector2 lookDir = (blob.GetNearestFriend().transform.position - gameObject.transform.position).normalized;
-        rb.velocity = lookDir;
+        rb.velocity = -lookDir;
     }
 }

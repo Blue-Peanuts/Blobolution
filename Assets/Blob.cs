@@ -16,6 +16,19 @@ public class Blob : MonoBehaviour
     {
         energy = gameObject.GetComponent<Energy>();
         MasterManager.Instance.blobCount++;
+        StartCoroutine(DrainNearby());
+    }
+
+    IEnumerator DrainNearby()
+    {
+        yield return new WaitForSeconds(0.5f);
+        foreach (var foe in GetAllNearEnemies(1.5f))
+        {
+            if(energy.energyLevel > foe.GetComponent<Energy>().energyLevel)
+                energy.Drain(2,foe.GetComponent<Energy>());
+        }
+
+        StartCoroutine(DrainNearby());
     }
 
     private void OnDestroy()
@@ -60,6 +73,9 @@ public class Blob : MonoBehaviour
     {
         Vector2 currentPosition = transform.position;
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(currentPosition, radius);
+        List<Collider2D> hitCollidersList = hitColliders.ToList();
+        hitCollidersList.Remove(GetComponent<Collider2D>());
+        hitColliders = hitCollidersList.ToArray();
         return hitColliders;
     }
     

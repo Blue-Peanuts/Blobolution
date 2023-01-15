@@ -14,7 +14,7 @@ public class StateGoToEnemy : BaseState
     }
     void FixedUpdate()
     {
-        Vector2 lookDir = (gameObject.transform.position - blob.GetNearestEnemy().transform.position).normalized;
+        Vector2 lookDir = (blob.GetNearestEnemy().transform.position - gameObject.transform.position).normalized;
         rb.velocity = lookDir;
     }
 }
