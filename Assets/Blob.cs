@@ -24,7 +24,8 @@ public class Blob : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         foreach (var foe in GetAllNearEnemies(1.5f))
         {
-            energy.Drain(2,foe.GetComponent<Energy>());
+            if(energy.energyLevel > foe.GetComponent<Energy>().energyLevel)
+                energy.Drain(2,foe.GetComponent<Energy>());
         }
 
         StartCoroutine(DrainNearby());
