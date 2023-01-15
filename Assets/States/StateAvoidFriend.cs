@@ -13,7 +13,9 @@ public class StateAvoidFriend : BaseState
     }
     void FixedUpdate()
     {
+        if (!blob.GetNearestFriend())
+            return;
         Vector2 lookDir = (blob.GetNearestFriend().transform.position - gameObject.transform.position).normalized;
-        rb.velocity = -lookDir;
+        rb.velocity = -lookDir * blob.moveSpeed;
     }
 }

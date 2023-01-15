@@ -10,9 +10,11 @@ public class MasterManager : MonoBehaviour
 {
     public static MasterManager Instance;
     
-    private const int NewBlobThreshold = 20;
+    private const int NewBlobThreshold = 50;
     private const int OriginalPelletEnergy = 3;
     private const int OriginalBlobEnergy = 30;
+
+    public float timeScale;
     
     private int EnergyLevel => GetComponent<Energy>().energyLevel;
     [HideInInspector]
@@ -25,10 +27,11 @@ public class MasterManager : MonoBehaviour
     {
         Instance = this;
         StartCoroutine(DrainAll());
+        StartCoroutine(PelletLoop());
+
     }
     IEnumerator DrainAll()
     {
-        print('a');
         foreach (var VARIABLE in FindObjectsOfType<Blob>())
         {
             GetComponent<Energy>().Drain(1, VARIABLE.GetComponent<Energy>());
@@ -38,8 +41,19 @@ public class MasterManager : MonoBehaviour
         StartCoroutine(DrainAll());
     }
 
+    IEnumerator PelletLoop()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (EnergyLevel > OriginalPelletEnergy && (blobCount >= NewBlobThreshold))
+        {
+            CreatePellets();
+        }
+        StartCoroutine(PelletLoop());
+    }
+
     private void Update()
     {
+        Time.timeScale = timeScale;
         if (blobCount < NewBlobThreshold) //if we need new blobs
         {
             if (EnergyLevel > OriginalBlobEnergy)
@@ -47,22 +61,18 @@ public class MasterManager : MonoBehaviour
                 CreateBlob();
             }
         }
-        else if (EnergyLevel > OriginalPelletEnergy) //if we dont need new blobs
-        {
-            CreatePellets();
-        }
 
     }
 
     private void CreateBlob()
     {
-        GameObject blob = Instantiate(blobPrefab, (Vector3)Random.insideUnitCircle * 30, quaternion.identity);
+        GameObject blob = Instantiate(blobPrefab, (Vector3)Random.insideUnitCircle * 100, quaternion.identity);
         Gene.RandomGene(blob);
         blob.GetComponent<Energy>().Drain(OriginalBlobEnergy,GetComponent<Energy>());
     }
     private void CreatePellets()
     {        
-        GameObject blob = Instantiate(pelletPrefab, (Vector3)Random.insideUnitCircle * 60, quaternion.identity);
+        GameObject blob = Instantiate(pelletPrefab, (Vector3)Random.insideUnitCircle * 170, quaternion.identity);
         blob.GetComponent<Energy>().Drain(OriginalPelletEnergy,GetComponent<Energy>());
     }
 }

@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b460508c82e6e40a163617fdbffc9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScale: 10
   blobCount: 0
   blobPrefab: {fileID: 4400072353801127444, guid: 388242471968add46ade07c86faae7bf, type: 3}
   pelletPrefab: {fileID: 6791642990806093933, guid: 79919deb784cc2241ba956f7bd04fc61, type: 3}
@@ -267,5 +268,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d666ee5e6e9914f49adc6099bc3dd58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyLevel: 1000
-  maxEnergy: 1000
+  energyLevel: 5000
+  maxEnergy: 5000

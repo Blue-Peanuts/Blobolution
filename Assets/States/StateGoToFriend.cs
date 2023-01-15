@@ -5,7 +5,6 @@ public class StateGoToFriend : BaseState
 {
     public Blob blob;
     public Rigidbody2D rb;
-    public float moveSpeed = 1f;
 
     void Start()
     {
@@ -14,7 +13,9 @@ public class StateGoToFriend : BaseState
     }
     void FixedUpdate()
     {
+        if (!blob.GetNearestFriend())
+            return;
         Vector2 lookDir = (blob.GetNearestFriend().transform.position - gameObject.transform.position).normalized;
-        rb.velocity = lookDir;
+        rb.velocity = lookDir * blob.moveSpeed;
     }
 }

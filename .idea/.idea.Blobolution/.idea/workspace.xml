@@ -5,13 +5,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blobolution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blobolution/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Blob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blob.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Blob.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Blob.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Food.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Food.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Energy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Energy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gene.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MasterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MasterManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Transition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Transition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/States/StateAvoidEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/States/StateAvoidEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/States/StateAvoidFriend.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/States/StateAvoidFriend.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/States/StateGoToEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/States/StateGoToEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/States/StateGoToFood.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/States/StateGoToFood.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/States/StateGoToFriend.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/States/StateGoToFriend.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,16 +31,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Unity.exe" />

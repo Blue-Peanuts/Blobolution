@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 public class StateGoToFood : BaseState
 {
     public Blob blob;
     public Rigidbody2D rb;
-    public float moveSpeed = 1f;
 
     void Start()
     {
@@ -14,7 +14,12 @@ public class StateGoToFood : BaseState
     }
     void FixedUpdate()
     {
+        if (!blob.GetNearestFood())
+        {
+            rb.velocity = -transform.position.normalized;
+            return;
+        }
         Vector2 lookDir = (blob.GetNearestFood().transform.position - gameObject.transform.position).normalized;
-        rb.velocity = lookDir;
+        rb.velocity = lookDir * blob.moveSpeed;
     }
 }

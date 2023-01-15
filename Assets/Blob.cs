@@ -16,20 +16,9 @@ public class Blob : MonoBehaviour
     {
         energy = gameObject.GetComponent<Energy>();
         MasterManager.Instance.blobCount++;
-        StartCoroutine(DrainNearby());
     }
 
-    IEnumerator DrainNearby()
-    {
-        yield return new WaitForSeconds(0.5f);
-        foreach (var foe in GetAllNearEnemies(1.5f))
-        {
-            if(energy.energyLevel > foe.GetComponent<Energy>().energyLevel)
-                energy.Drain(2,foe.GetComponent<Energy>());
-        }
-
-        StartCoroutine(DrainNearby());
-    }
+    
 
     private void OnDestroy()
     {

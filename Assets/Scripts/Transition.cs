@@ -33,6 +33,13 @@ public class Transition
                 newTransition.Conditions.Add(newCondition);
         }
 
+        newTransition.FromStateId = FromStateId;
+        newTransition.ToStateId = ToStateId;
+        
+        if (Random.Range(0, 9) == 0)
+            newTransition.FromStateId = Random.Range(0, StateCount);
+        if (Random.Range(0, 9) == 0)
+            newTransition.ToStateId = Random.Range(0, StateCount);
         if (Random.Range(0, 9) == 0)
             newTransition.Conditions.Add(BaseCondition.NewRandomCondition());
         return newTransition;

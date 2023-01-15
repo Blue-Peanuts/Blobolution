@@ -52,7 +52,6 @@ public class StateMachine : MonoBehaviour
             foreach (var tuple in geneTransitions[_currentStateId])
             {
                 bool change = true;
-                print(tuple);
                 foreach (var condition in tuple.Item1)
                 {
                     if (!condition.Fullfilled(this))
